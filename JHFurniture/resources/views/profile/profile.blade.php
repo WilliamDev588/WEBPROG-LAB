@@ -12,7 +12,9 @@
                 <div class="card-body">
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Full Name') }}</label>
-                            {{ Auth::user()->fullname }}
+                            <div class="col-md-6">
+                                {{ Auth::user()->fullname }}
+                            </div>
                         </div>
 
                         <div class="row mb-3">
@@ -28,6 +30,7 @@
 
                                 <div class="col-md-6">
                                     Admin
+                                </div>
                             </div>
                             @else
                             <div class="row mb-3">
@@ -57,7 +60,11 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-3">
                                 <button type="submit" class="btn btn-primary">
-                                    Log Out
+                                    <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" style="text-decoration: none; color:white">
+                                        {{ __('Logout') }} 
+                                    </a>
                                 </button>
                             </div>
                             <div class="col-md-6">
@@ -74,7 +81,7 @@
                             <div class="col-md-3">
                                 <button type="submit" class="btn btn-primary">
                                     <a href="{{url('update_profile')}}" style="text-decoration: none; color:white">
-                                    Update Profil
+                                    Update Profile
                                     </a>
                                 </button>
                             </div>
