@@ -12,12 +12,12 @@ class FurnitureController extends Controller
     public function AllFurniture(){
         $furnitures = Furniture::latest()->paginate(4);
         // $trashCat = Furniture::onlyTrashed()->latest()->paginate(3);
-        return view('admin.viewFurniture', compact('furnitures'));
+        return view('viewFurniture', compact('furnitures'));
     }
     public function ViewAddFurniture(){
         $furnitures = Furniture::latest()->paginate(5);
 
-        return view('admin.addFurniture',compact('furnitures'));
+        return view('addFurniture',compact('furnitures'));
     }
 
     public function AddFurniture(Request $request){
@@ -68,7 +68,7 @@ class FurnitureController extends Controller
 
     public function Edit($id){
         $furnitures = Furniture::find($id);
-        return view('admin.updateFurniture', compact('furnitures'));
+        return view('updateFurniture', compact('furnitures'));
     }
 
     public function Update(Request $request, $id){
@@ -135,11 +135,11 @@ class FurnitureController extends Controller
         $furnitures = Furniture::inRandomOrder()->take(4)->get();
         // $furnitures = Furniture::latest()->paginate(5);
 
-        return view('admin.home',compact('furnitures'));
+        return view('homeFurniture',compact('furnitures'));
     }
     public function Detail($id){
         $furnitures = Furniture::find($id);
-        return view('admin.furnitureDetail', compact('furnitures'));
+        return view('furnitureDetail', compact('furnitures'));
     }
 
     public function search(){

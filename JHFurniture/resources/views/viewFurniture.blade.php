@@ -46,6 +46,7 @@
                             <div class="card-body" style="background-color: #a84cac;">
                                 <p class="card-title" style="color: white; font-weight: bold; text-align: center;">{{$furniture->furnitureName}}</p>
                                 <p class="card-text" style="color: white;text-align: center;">Rp. {{$furniture->furniturePrice}}</p>
+                                @if(Auth::user()->email =='admin@gmail.com')
                                 <div class="row">
                                     <div class="col">
                                     <a href="{{url('furniture/edit/'.$furniture->id)}}" class="btn btn-success">Update</a>
@@ -53,7 +54,15 @@
                                     <div class="col">
                                     <a href="{{url('furniture/delete/'.$furniture->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</a>      
                                     </div>
-                                </div>    
+                                </div>  
+                                @else
+                                <div class="row">
+                                    <div class="col">
+                                    <a href="{{url('furniture/edit/'.$furniture->id)}}" class="btn btn-success">Add to cart</a>
+                                    </div>
+                            
+                                </div>  
+                                @endif
                             </div>
                         </div>
                     @endforeach
