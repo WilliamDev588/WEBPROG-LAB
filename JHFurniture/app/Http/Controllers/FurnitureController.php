@@ -10,9 +10,14 @@ use Illuminate\Support\Facades\Storage;
 class FurnitureController extends Controller
 {
     public function AllFurniture(){
-        $furnitures = Furniture::latest()->paginate(5);
+        $furnitures = Furniture::latest()->paginate(4);
         // $trashCat = Furniture::onlyTrashed()->latest()->paginate(3);
-        return view('admin.addFurniture', compact('furnitures'));
+        return view('viewFurniture', compact('furnitures'));
+    }
+    public function ViewAddFurniture(){
+        $furnitures = Furniture::latest()->paginate(5);
+
+        return view('addFurniture',compact('furnitures'));
     }
 
     public function AddFurniture(Request $request){
@@ -63,17 +68,17 @@ class FurnitureController extends Controller
 
     public function Edit($id){
         $furnitures = Furniture::find($id);
-        return view('admin.editFurniture', compact('furnitures'));
+        return view('updateFurniture', compact('furnitures'));
     }
 
     public function Update(Request $request, $id){
         $validated = $request->validate([
-            'furnitureName' => 'required|max:15',
+            'furnitureName' => 'required|unique:furniture|max:15',
             'furniturePrice' => 'required|numeric|between:5000,10000000',
             'furnitureType' => 'required|in:Chair,Table,Sofa',
             'furnitureColor' => 'required|in:Red,Blue,Yellow',
 
-            'furnitureImage' => 'required|mimes:jpg,jpeg,png',
+            'furnitureImage' => 'mimes:jpg,jpeg,png',
         ],
         
         );
@@ -126,5 +131,21 @@ class FurnitureController extends Controller
         Furniture::find($id)->delete();
         return Redirect()->back()->with('success','Furniture deleted successfully');
     }
+    public function home(){
+        $furnitures = Furniture::inRandomOrder()->take(4)->get();
+        // $furnitures = Furniture::latest()->paginate(5);
 
+        return view('homeFurniture',compact('furnitures'));
+    }
+    public function Detail($id){
+        $furnitures = Furniture::find($id);
+        return view('furnitureDetail', compact('furnitures'));
+    }
+
+    public function search(){
+        $search_text = $_GET['query'];
+        $furnitures = Furniture::where('furnitureName', 'LIKE','%'.$search_text.'%')->get();
+
+        return view('search', compact('furnitures'));
+    }
 }

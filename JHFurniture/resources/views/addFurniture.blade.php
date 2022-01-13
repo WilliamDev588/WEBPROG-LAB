@@ -11,55 +11,16 @@
     
 
 <div class="py-12">
-        <div class="container">
-            <div class="row">
-            <div class="col-md-8">
-            <div class="card">
-            @if(session('success'))
+@if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>{{session('success')}}</strong> 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
             </button>
             </div>
             @endif
-                <div class="card-header">All Foods</div>
+        <div class="container">
+            <div class="row">
             
-            <table class="table">
-                <thead>
-                    <tr>
-                    <th scope="col">SL No</th>
-                    <th scope="col">Furniture Name</th>
-                    <th scope="col">Furniture Price</th>
-                    <th scope="col">Furniture Type</th>
-                    <th scope="col">Furniture Color</th>
-                    <th scope="col">Furniture Image</th>
-
-                    <th scope="col">Action</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- @php($i = 1) -->
-                    @foreach($furnitures as $furniture)
-                    <tr>
-                    <th scope="row">{{$furnitures->firstItem()+$loop->index}}</th>
-                    <td>{{$furniture->furnitureName}}</td>
-                    <td>{{$furniture->furniturePrice}}</td>
-                    <td>{{$furniture->furnitureType}}</td>
-                    <td>{{$furniture->furnitureColor}}</td>
-
-                    <td><img src="{{asset($furniture->furnitureImage)}}" style="height:70px; width:100px"></td>
-                    <td>
-                        <a href="{{url('furniture/edit/'.$furniture->id)}}" class="btn btn-info">Edit</a>
-                        <a href="{{url('furniture/delete/'.$furniture->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</a>
-                    </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                </table>
-                {{$furnitures->links('pagination::bootstrap-4')}}
-                </div>
-            </div>
             <div class="col-md-4">
             <div class="card">
                 <div class="card-header">Add furniture</div>
