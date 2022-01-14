@@ -44,3 +44,14 @@ Route::get('/furniture/edit/{id}', [FurnitureController::class, 'Edit']);
 Route::post('/furniture/update/{id}', [FurnitureController::class, 'Update']);
 Route::get('/furniture/delete/{id}', [FurnitureController::class, 'Delete']);
 Route::get('/furniture/detail/{id}', [FurnitureController::class, 'Detail']);
+
+// Cart
+//Route::view('/mycart', 'user.cart');
+Route::get('/mycart', [\App\Http\Controllers\CartController::class, 'cartPage'])->name('all.cart');
+Route::get('/addCart/{id}', [\App\Http\Controllers\CartController::class, 'addCart']);
+Route::get('/addToCart/{id}', [\App\Http\Controllers\CartController::class, 'addToCart']);
+Route::get('/minusToCart/{id}', [\App\Http\Controllers\CartController::class, 'minusToCart']);
+
+Route::get('/removeCart/{id}', [\App\Http\Controllers\CartController::class, 'remove']);
+Route::get('/increaseQty/{id}', [\App\Http\Controllers\CartController::class, 'increment']);
+Route::get('/decreaseQty/{id}', [\App\Http\Controllers\CartController::class, 'decreaseQuantity']);
