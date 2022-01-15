@@ -56,7 +56,6 @@ class RegisterController extends Controller
             'address' => ['required', 'string', 'min:5', 'max:95'],
             'gender' => ['required', 'string', 'not_regex:/gender/i'],
 
-
         ]);
     }
 

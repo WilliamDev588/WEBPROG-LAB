@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FurnitureController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -21,17 +23,17 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'show_profile'])->name('profile');
-    Route::get('/update_profile', [App\Http\Controllers\ProfileController::class, 'update_profile'])->name('profile.update_profile');
-    Route::patch('/update_profile', [App\Http\Controllers\ProfileController::class, 'updating_profile'])->name('profile.update_profile');
+    Route::get('/profile', [ProfileController::class, 'show_profile'])->name('profile');
+    Route::get('/update_profile', [ProfileController::class, 'update_profile'])->name('profile.update_profile');
+    Route::patch('/update_profile', [ProfileController::class, 'updating_profile'])->name('profile.update_profile');
 });
 
 

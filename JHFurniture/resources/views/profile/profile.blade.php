@@ -24,12 +24,12 @@
                                 {{ Auth::user()->email }}
                             </div>
                         </div>
-                        @if(Auth::user()->email =='admin@gmail.com')
+                        @if(Auth::user()->role =='Admin')
                             <div class="row mb-3">
                                 <label for="Role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                                 <div class="col-md-6">
-                                    Admin
+                                    {{ Auth::user()->role }}
                                 </div>
                             </div>
                             @else
@@ -53,7 +53,7 @@
                                 <label for="Role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
     
                                 <div class="col-md-6">
-                                    Member
+                                    {{ Auth::user()->role }}
                                 </div>
                             </div>
                         @endif
@@ -68,7 +68,7 @@
                                 </button>
                             </div>
                             <div class="col-md-6">
-                            @if(Auth::user()->email =='admin@gmail.com')
+                            @if(Auth::user()->role =='admin')
                                 <button type="submit" class="btn btn-primary">
                                   View All User's Transaction
                                  </button>

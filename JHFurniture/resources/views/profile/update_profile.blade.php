@@ -57,7 +57,7 @@
                         </div>
 
 
-                        @if(Auth::user()->email !='admin@gmail.com')
+                        @if(Auth::user()->role !='Admin')
                             <div class="row mb-3">
                                 <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
     
