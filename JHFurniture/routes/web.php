@@ -57,3 +57,6 @@ Route::get('/minusToCart/{id}', [\App\Http\Controllers\CartController::class, 'm
 Route::get('/removeCart/{id}', [\App\Http\Controllers\CartController::class, 'remove']);
 Route::get('/increaseQty/{id}', [\App\Http\Controllers\CartController::class, 'increment']);
 Route::get('/decreaseQty/{id}', [\App\Http\Controllers\CartController::class, 'decreaseQuantity']);
+Route::get('/checkoutPage', [\App\Http\Controllers\CartController::class, 'checkoutPage'])->name('checkoutPagge');
+Route::post('/checkout', [\App\Http\Controllers\TransactionController::class, 'checkout']);
+Route::get('/transactionHistory', [\App\Http\Controllers\TransactionController::class, 'txHistory']);

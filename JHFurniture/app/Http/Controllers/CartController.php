@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Furniture;
 use App\Models\Cart;
+use App\Models\Furniture;
+
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function cartPage(){
         return view('cart')->with('total', $this->total());
+    }
+    public function checkoutPage(){
+        return view('checkout')->with('total', $this->total());
     }
     public function addCart($id)
     {
@@ -126,8 +130,8 @@ class CartController extends Controller
         // if cart not empty then check if this furniture exist then DECREMENT quantity
         if(isset($cart[$id])) {
             if($cart[$id]['quantity'] == 1){
-                unset($cart[$id]);
-                session()->put('cart', $cart);
+                    unset($cart[$id]);
+                    session()->put('cart', $cart);
                 
                 session()->flash('success', 'furniture removed successfully');
                 // return redirect()->back()->with('total', $this->total());

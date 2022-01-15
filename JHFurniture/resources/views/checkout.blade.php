@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
+    <title>Checkout</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
@@ -34,12 +34,8 @@
                                     <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Total</div>
                                     </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Button</div>
-                                    </th>
-                                    <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Remove</div>
-                                    </th>
+                                    
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,12 +57,7 @@
                                     <td class="border-0 align-middle subTotal">{{$details['quantity'] * $details['furniturePrice']}}</td>
                                     
                                   
-                                    <td class="border-0 align-middle"><a href="/removeCart/{{$id}}" class="text-dark">Remove</a></td>
-                                    <td>
-                                    <a href="/addToCart/{{$id}}" class="btn btn-success" >+</a>
-                                    <a href="/minusToCart/{{$id}}" class="btn btn-danger" >-</a>
- 
-                                    </td>
+                                   
                                         
                                 
                                 </tr>
@@ -78,6 +69,8 @@
                     <!-- End -->
                 </div>
             </div>
+            <form action="/checkout" method="post" enctype="multipart/form-data">
+                {{csrf_field()}}
                 <div class="row py-5 p-4 bg-white rounded shadow-sm">
                    
                     <div class="col-lg-6">
@@ -87,13 +80,24 @@
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                                     <h5 class="font-weight-bold">{{$total}}</h5>
                                 </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Payment Method</strong>
+                                    <h5 class="font-weight-bold"></h5>
+                                    <input type="radio" id="html" name="method" value="Credit" >
+                                      <label for="html">Credit</label><br>
+                                      <input type="radio" id="css" name="method" value="Debit">
+                                      <label for="css">Debit</label><br>
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Card Number</strong>
+                                    <h5 class="font-weight-bold"></h5>
+                                    <input type="text" name="cardNumber" placeholder="Enter Card Number" class="form-control input-group  border rounded-pill " required/>
+
+                                </li>
                             </ul>
-                            <a class="btn rounded-pill bg-dark " style="width: 20rem; color: white; margin-left:5rem;" href="{{url('/checkoutPage')}}" role="button">Proceed to checkout</a>
-                            
-                            </a>
+                            <button type="submit" class="btn rounded-pill bg-dark " style="width: 20rem; color: white; margin-left:5rem;">Checkout</button>
                         </div>
                     </div>
                 </div>
+            </form>
         </div>
     </div>
     
