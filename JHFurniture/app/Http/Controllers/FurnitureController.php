@@ -135,7 +135,7 @@ class FurnitureController extends Controller
         $furnitures = Furniture::inRandomOrder()->take(4)->get();
         // $furnitures = Furniture::latest()->paginate(5);
 
-        return view('homeFurniture',compact('furnitures'));
+        return view('home',compact('furnitures'));
     }
     public function Detail($id){
         $furnitures = Furniture::find($id);

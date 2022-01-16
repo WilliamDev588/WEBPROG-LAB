@@ -68,15 +68,9 @@
                                 </button>
                             </div>
                             <div class="col-md-6">
-                            @if(Auth::user()->role =='admin')
-                                <button type="submit" class="btn btn-primary">
-                                  View All User's Transaction
-                                 </button>
-                                @else
-                                <button type="submit" class="btn btn-primary">
-                                    View User's Transaction
-                                </button>
-                            @endif
+                            <a href="/transactionHistory" class="btn btn-primary">View Transaction History</a>
+
+                                
                             </div>
                             <div class="col-md-3">
                                 <button type="submit" class="btn btn-primary">

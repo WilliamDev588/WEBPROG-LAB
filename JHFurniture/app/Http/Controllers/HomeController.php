@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -25,9 +25,9 @@ class HomeController extends Controller
      */
     public function home(Request $request)
     {
-        // $trashCat = Furniture::onlyTrashed()->latest()->paginate(3);
-        return view('home', [
-            'user' => $request->user()
-        ]);
+        $furnitures = Furniture::inRandomOrder()->take(4)->get();
+        // $furnitures = Furniture::latest()->paginate(5);
+
+        return view('home',compact('furnitures'));
     }
 }

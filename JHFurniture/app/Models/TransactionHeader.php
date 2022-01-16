@@ -20,8 +20,14 @@ class TransactionHeader extends Model
     public function TransactionDetail(){
         return $this->hasMany(TransactionDetail::class, 'idTransactionHeader', 'id');
     }
-
     public function User(){
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class, 'id', 'idUser');
     }
+
+    // public function User(){
+    //     return $this->belongsTo(User::class);
+    // }
+    // public function User(){
+    //     return $this->hasOne(User::class, 'idUser', 'id');
+    // }
 }
