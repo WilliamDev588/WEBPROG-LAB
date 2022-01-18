@@ -100,8 +100,5 @@
             </div>
         </form>
     </div>
-<<<<<<< Updated upstream
-=======
 </div>
->>>>>>> Stashed changes
 @endsection

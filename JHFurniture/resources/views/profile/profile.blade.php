@@ -67,11 +67,16 @@
                                 </a>
                             </button>
                         </div>
+                        @if(Auth::user()->role =='Admin')
+                        <div class="col-md-6">
+                            <a href="/transactionHistory" class="btn btn-primary">View All User's Transaction History</a>
+                            </div>
+
+                        @else
                         <div class="col-md-6">
                             <a href="/transactionHistory" class="btn btn-primary">View Transaction History</a>
-
-
-                        </div>
+                            </div>
+                        @endif
                         <div class="col-md-3">
                             <button type="submit" class="btn btn-primary">
                                 <a href="{{url('update_profile')}}" style="text-decoration: none; color:white">

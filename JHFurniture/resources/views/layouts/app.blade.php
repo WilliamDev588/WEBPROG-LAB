@@ -71,7 +71,6 @@
                         </li>
                         @endif
                         @else
-<<<<<<< Updated upstream
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                             </li>
@@ -94,19 +93,10 @@
                             @endif
                             
                             @endif
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->fullname }}
-=======
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('profile') }}">Profile</a>
-                        </li>
-                        @if(Auth::check())
-
-                        @if(Auth::user()->role =='Admin')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('viewAdd.furniture') }}">Add Furniture</a>
-                        </li>
+                           
+                            
+                        
+                        
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -118,7 +108,6 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
->>>>>>> Stashed changes
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -126,8 +115,7 @@
                                 </form>
                             </div>
                         </li>
-                        @endif
-                        @endif
+                        
                         @endguest
                     </ul>
                 </div>
@@ -172,11 +160,8 @@
         </div>
     </footer>
     </div>
-<<<<<<< Updated upstream
   
-=======
 
->>>>>>> Stashed changes
 </body>
 
 </html>

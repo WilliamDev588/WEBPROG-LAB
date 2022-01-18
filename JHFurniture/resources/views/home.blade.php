@@ -1,52 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< Updated upstream
         
                 
 
-                <div class="container">
-                
-                <div class="col align-items-center">
-                
-                @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{session('success')}}</strong> 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            </button>
-            </div>
-            @endif
-                    <div class="col">
-                    @if(Auth::check())
-                    <h3>                       Welcome {{ Auth::user()->fullname }} to JHFurniture</h3>
-                                            
-                                        
-                    @endif
-                    <div class="card-deck">
-                    @foreach($furnitures as $furniture)
-                        <div class="card">
-                            <a href="{{url('furniture/detail/'.$furniture->id)}}">
-                                    <img class="card-img-top"src="{{asset($furniture->furnitureImage)}}" alt="Card image cap" style="height:200px">
-                            </a>
-                                
-                            <div class="card-body" style="background-color: #a84cac;">
-                                <p class="card-title" style="color: white; font-weight: bold; text-align: center;">{{$furniture->furnitureName}}</p>
-                                <p class="card-text" style="color: white;text-align: center;">Rp. {{$furniture->furniturePrice}}</p>
-                                @if(Auth::check())
-=======
-
+             
 
 <div class="container">
-    <h3>
-        @if(Auth::check())
-        Hello {{ Auth::user()->fullname }}
-        @else
-        Hello guest
-        @endif
-    </h3>
+    
 
 
-    <br><br>
 
     <div class="col align-items-center">
         @if(session('success'))
@@ -57,6 +20,13 @@
         </div>
         @endif
         <div class="col">
+        <h3>
+            @if(Auth::check())
+            Welcome {{ Auth::user()->fullname }} to JH Furniture
+            @else
+            Welcome Guest to JH Furniture
+            @endif
+        </h3>
             <div class="card-deck">
                 @foreach($furnitures as $furniture)
                 <div class="card">
@@ -71,7 +41,6 @@
                         <p class="card-text" style="color: white;text-align: center;">Rp. {{$furniture->furniturePrice}}
                         </p>
                         @if(Auth::check())
->>>>>>> Stashed changes
 
                         @if(Auth::user()->role =='Admin')
                         <div class="row">

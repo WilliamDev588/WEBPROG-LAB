@@ -141,11 +141,21 @@ class FurnitureController extends Controller
         $furnitures = Furniture::find($id);
         return view('furnitureDetail', compact('furnitures'));
     }
-
-    public function search(){
-        $search_text = $_GET['query'];
-        $furnitures = Furniture::where('furnitureName', 'LIKE','%'.$search_text.'%')->get();
-
-        return view('search', compact('furnitures'));
+    public function search(Request $request){
+        $search_query = $request->query('query');
+        $furnitures = Furniture::where('furnitureName', "LIKE", "%$search_query%")->paginate(4)->appends(['query' =>$search_query]);
+        return view('viewFurniture')->with('furnitures', $furnitures);
     }
+    // public function search(){
+    //     $furnitures = Furniture::latest()->paginate(4);
+    //     $search_text = Furniture::get('search');
+
+    //     // $search_text = $_GET['query'];
+    //     // if($search_text == "") return view("viewFurniture", compact("furnitures"));
+
+    //     $furnitures = Furniture::where('furnitureName', 'LIKE','%'.$search_text.'%')->paginate(4);
+    //     $furnitures->appends(['search' => $search_text]);
+
+    //     return view('search', compact('furnitures'));
+    // }
 }
