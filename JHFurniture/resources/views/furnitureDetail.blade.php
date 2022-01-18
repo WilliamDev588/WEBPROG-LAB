@@ -51,6 +51,9 @@
    
     
   </div>
+  @if(Auth::check())
+
+@if(Auth::user()->role =='Admin')
   <div class="row justify-content-center">
     <div class="col-2">
     <a href="{{url('furniture/edit/'.$furnitures->id)}}" class="btn btn-success">Update</a>
@@ -62,6 +65,16 @@
     <div class="col-2">
     <a href="{{ url()->previous() }}" class="btn btn-info" >Previous</a>    
     </div>
+@else
+<div class="col-4">
+    <a href="{{url('addCart/'.$furnitures->id)}}" class="btn btn-success" >Add To Cart</a>    
+ </div>
+ <div class="col-2">
+    <a href="{{ url()->previous() }}" class="btn btn-info" >Previous</a>    
+    </div>
+@endif
+@endif
+    
   </div>
   
 </div>
