@@ -1,17 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-        @if(Auth::check())
-        {{ Auth::user()->fullname }}
-
-                                            
-                                        
-        @endif
+        
                 
 
                 <div class="container">
                 
                 <div class="col align-items-center">
+                
                 @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>{{session('success')}}</strong> 
@@ -20,6 +16,11 @@
             </div>
             @endif
                     <div class="col">
+                    @if(Auth::check())
+                    <h3>                       Welcome {{ Auth::user()->fullname }} to JHFurniture</h3>
+                                            
+                                        
+                    @endif
                     <div class="card-deck">
                     @foreach($furnitures as $furniture)
                         <div class="card">

@@ -24,9 +24,9 @@
 
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+    <div id="app" >
+        <nav class="navbar navbar-expand-md navbar-light bg-secondary shadow-sm" >
+            <div class="container" >
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -49,6 +49,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('all.furniture') }}">View All Furniture</a>
                         </li>
+                        
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -65,6 +66,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                             </li>
+                            
                             @if(Auth::check())
 
                             @if(Auth::user()->role =='Admin')
@@ -72,6 +74,16 @@
                                 <a class="nav-link" href="{{ route('viewAdd.furniture') }}">Add Furniture</a>
                             </li>
                             @endif
+                            
+                            @endif
+                            @if(Auth::check())
+
+                            @if(Auth::user()->role !='Admin')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('all.cart') }}">My Cart</a>
+                            </li>
+                            @endif
+                            
                             @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -100,8 +112,42 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="bg-dark text-white pt-4 pb-2">
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold " >About Us</h5>
+                    <p>JH Furniture is a furniture shop in Indonesia that has been there for almost 10 years. To expand its business, JH Furniture wants to create a website for their shop.   </p>
+                </div>
+                
+               
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold ">Contact</h5>
+                    <p>
+                        <i class="fas fa-home mr-3"></i>Jakarta, Indonesia
+                    </p>
+                    <i class="fas fa-envelope mr-3"></i>CS@JHFurniture.com
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i>28282
+                    </p>
+                </div>
+
+
+
+
+
+                <div class="row align-items-cente mt-5">
+                    <div class="text-center p-3">
+                        <p> Copyright &copy; Bluejack 20-1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     </div>
-   
+  
 </body>
 
 </html>
